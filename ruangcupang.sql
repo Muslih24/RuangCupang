@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jan 2021 pada 06.08
+-- Waktu pembuatan: 10 Jan 2021 pada 16.50
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -29,16 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `nama` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
-  `password` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `no_hp` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
-  `alamat` int(11) NOT NULL,
-  `tgl_lahir` int(11) NOT NULL,
-  `jk` int(11) NOT NULL
+  `nama` text NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  `level` int(1) NOT NULL,
+  `no_hp` int(15) NOT NULL,
+  `email` text NOT NULL,
+  `alamat` text NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `jk` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `no_hp`, `email`, `alamat`, `tgl_lahir`, `jk`) VALUES
+(1, 'asep junaidi', 'asep1', 'asep1', 1, 1231231132, 'asjdhia@gmail.com', 'asdasdkjbajbsjkqjbakjsd', '2021-01-12', 1),
+(2, 'asep junaidi', 'asep1', 'asep1', 1, 1231231132, 'asjdhia@gmail.com', 'asdasdkjbajbsjkqjbakjsd', '2021-01-12', 1);
 
 --
 -- Indexes for dumped tables
@@ -58,7 +66,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

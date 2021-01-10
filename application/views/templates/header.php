@@ -20,8 +20,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="#">Daftar User</a>
+      <a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="<?= base_url() ?>user">Daftar User</a>
       <a class="nav-link" href="#">Kelola Ikan</a>
       <a class="nav-link " href="#">Berita</a>
     </div>

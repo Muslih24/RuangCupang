@@ -1,9 +1,10 @@
 <?php 
 class User extends CI_Controller{
-	public function __construck()
+	public function __construct()
 	{
-		parent::__construck():
+		parent::__construct();
 		$this->load->model('User_model');
+		$this->load->helper('url');
 	}
 	public function index()
 	{

@@ -4,11 +4,9 @@
 		<div class="col-md-6">
 		<h1>Daftar User</h1>
 		<ul class="list-group">
-	  		<li class="list-group-item">Cras justo odio</li>
-  			<li class="list-group-item">Dapibus ac facilisis in</li>
-  			<li class="list-group-item">Morbi leo risus</li>
-  			<li class="list-group-item">Porta ac consectetur ac</li>
-  			<li class="list-group-item">Vestibulum at eros</li>
+			<?php foreach ($user as $use) : ?>
+	  		<li class="list-group-item"><?= $use['nama'] ?></li>
+			<?php endforeach; ?>
 		</ul>
 		</div>
 	</div>
