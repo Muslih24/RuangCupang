@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <a href="<?= base_url('Backend/Jenis/UpdateJenis') ?>">Tambah Jenis</a>
+    <a href="<?= base_url('Backend/Jenis/AddJenis') ?>">Tambah Jenis</a>
     <table border="1">
         <tr>
             <th>No</th>
