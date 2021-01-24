@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jan 2021 pada 10.40
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.7
+-- Generation Time: Jan 24, 2021 at 03:45 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `jenis`
+--
+
+CREATE TABLE `jenis` (
+  `id_jenis` int(11) NOT NULL,
+  `jenis` varchar(10) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis`
+--
+
+INSERT INTO `jenis` (`id_jenis`, `jenis`, `total`) VALUES
+(1, 'Giant', 0),
+(4, 'Apa aja', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -41,7 +62,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `no_hp`, `email`, `alamat`, `tgl_lahir`, `jk`) VALUES
@@ -54,17 +75,29 @@ INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `no_hp`, `ema
 --
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `jenis`
+--
+ALTER TABLE `jenis`
+  ADD PRIMARY KEY (`id_jenis`);
+
+--
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `jenis`
+--
+ALTER TABLE `jenis`
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
