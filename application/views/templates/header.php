@@ -25,8 +25,8 @@
     <div class="navbar-nav">
       <a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
       <a class="nav-link" href="<?= base_url() ?>user">List User</a>
-      <a class="nav-link" href="#">Manage Data Ikan</a>
-      <a class="nav-link " href="#">News</a>
+      <a class="nav-link" href="<?= base_url() ?>backend/jenis">Jenis Ikan</a>
+      <a class="nav-link" href="<?= base_url() ?>Backend/Info">News</a>
     </div>
   </div>
   </div>

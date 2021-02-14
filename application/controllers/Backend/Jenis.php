@@ -9,7 +9,9 @@ class Jenis extends CI_Controller
     function index()
     {
         $data['jenis'] = $this->Jenis_model->getData()->result();
+        $this->load->view('templates/header');
         $this->load->view('Backend/Jenis/Jenis_view', $data);
+        $this->load->view('templates/footer');
     }
 
     function AddJenis()
@@ -61,5 +63,10 @@ class Jenis extends CI_Controller
         $where = ['id_jenis' => $id_jenis];
         $this->Jenis_model->DeleteJenis($where, 'jenis');
         redirect('Backend/Jenis');
+    }
+    function DetailJenis($id_jenis){
+     $where = ['id_jenis' => $id_jenis];
+        $data['jenis'] = $this->Jenis_model->GetWhere($where, 'jenis')->result();
+        $this->load->view('Backend/Jenis/Jenis_detail', $data);   
     }
 }
