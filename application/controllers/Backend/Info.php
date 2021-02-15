@@ -17,7 +17,9 @@ class Info extends CI_Controller
 
     function AddInfo()
     {
+        $this->load->view('templates/header');
         $this->load->view('Backend/Info/Info_add');
+        $this->load->view('templates/footer');
     }
 
     function ProsesAddInfo()
