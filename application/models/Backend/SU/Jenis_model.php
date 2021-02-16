@@ -22,9 +22,17 @@ class Jenis_model extends CI_Model
         $this->db->delete($table);
     }
 
-    function EditJenis($where, $data, $table)
+    function EditJenis()
     {
-        $this->db->where($where);
-        $this->db->update($table, $data);
+      $id_jenis = $this->input->post('id_jenis');
+      $jenis = $this->input->post('jenis');
+
+      $data = [
+        'id_jenis' => $id_jenis,
+        'jenis' => $jenis
+      ];
+
+        $this->db->where('id_jenis',$id_jenis);
+        $this->db->update('jenis', $data);
     }
 }

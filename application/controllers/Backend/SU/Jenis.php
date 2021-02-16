@@ -27,28 +27,17 @@ class Jenis extends CI_Controller
         }
     }
 
-    function EditJenis($id_jenis)
-    {
-        $where = ['id_jenis' => $id_jenis];
-        $data['jenis'] = $this->Jenis_model->GetWhere($where, 'jenis')->result();
-        $this->load->view('Backend/Jenis/Jenis_edit', $data);
-    }
 
-    function UpdateJenis()
+    function ProsesEditJenis()
     {
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Backend/Jenis/Jenis_edit');
+          redirect('Backend/SU/Jenis');
         } else {
-            $id_jenis = $this->input->post('id_jenis');
-            $jenis = $this->input->post('jenis');
-
-
-            $data = ['jenis' => $jenis];
-            $where = ['id_jenis' => $id_jenis];
-            $this->Jenis_model->EditJenis($where, $data, 'jenis');
-            redirect('Backend/Jenis');
+            $this->Jenis_model->EditJenis();
+            $this->session->set_flashdata('flash', 'Diubah');
+            redirect('Backend/SU/Jenis');
         }
     }
 
@@ -56,7 +45,9 @@ class Jenis extends CI_Controller
     {
         $where = ['id_jenis' => $id_jenis];
         $this->Jenis_model->DeleteJenis($where, 'jenis');
-        redirect('Backend/Jenis');
+        $this->session->set_flashdata('flash', 'Dihapus');
+
+          redirect('Backend/SU/Jenis');
     }
     function DetailJenis($id_jenis)
     {

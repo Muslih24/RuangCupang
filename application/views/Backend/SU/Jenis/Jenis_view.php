@@ -95,7 +95,7 @@
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Data User<strong>Berhasil</strong> <?= $this->session->flashdata('flash'); ?>.
+                                    Jenis Cupang<strong> Berhasil </strong> <?= $this->session->flashdata('flash'); ?>.
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -137,7 +137,9 @@
                                                         <td><?= $key->jenis ?></td>
                                                         <td><?= $key->total ?></td>
                                                         <td>
-
+                                                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalForm2<?php echo $key->id_jenis;?>">
+                                                            Ubah
+                                                          </button>
                                                             <a class="btn btn-info btn-sm" href="<?= base_url('Backend/SU/Jenis/EditJenis/' . $key->id_jenis); ?>">Ubah</a>
                                                             <a class="btn btn-danger btn-sm" href="<?= base_url('Backend/SU/Jenis/DeleteJenis/' . $key->id_jenis); ?>">Hapus</a>
                                                         </td>
@@ -154,31 +156,73 @@
                 </div>
                 <!-- Tambah Jenis -->
                 <div class="modal fade" id="exampleModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalFormTitle">Tambah Jenis Ikan Cupang</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="<?php echo base_url('Backend/SU/Jenis/ProsesAddJenis'); ?>" method="POST">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="jenis">Jenis</label>
-                                        <input type="text" name="jenis" class="form-control" id="jenis" placeholder="Masukan Jenis">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Batal</button>
-                            </form>
-                            <button class="btn btn-primary btn-pill" type="submit"> Simpan</button>
-                        </div>
+        					<div class="modal-dialog" role="document">
+        						<div class="modal-content">
+        							<div class="modal-header">
+        								<h5 class="modal-title" id="exampleModalFormTitle">Tambah Jenis Cupang</h5>
+        								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        									<span aria-hidden="true">&times;</span>
+        								</button>
+        							</div>
+        							<div class="modal-body">
+        								<form action="<?= site_url("Backend/SU/Jenis/ProsesAddJenis");?>" method="post">
+        									<div class="form-group">
+        										</div>
+                            <label for="jenis">Jenis</label>
+                            <input type="text" name="jenis" class="form-control" id="jenis">
 
-                    </div>
-                </div>
 
-                <!-- Akhir Ubah -->
+        							</div>
+        							<div class="modal-footer">
+
+        								<button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Batal</button>
+        								<button class="btn btn-primary btn-pill" type="submit"> Simpan</button>
+
+        							</div>
+        						</form>
+        						</div>
+        					</div>
+        				</div>
+        				<!-- Akhir Tambah -->
+
+        				<!-- Edit -->
+        				<?php
+        				$no=0;
+        				foreach ($jenis as $key) :
+        					$no++;?>
+
+        				<div class="modal fade" id="exampleModalForm2<?php echo $key->id_jenis;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+        					<div class="modal-dialog" role="document">
+        						<div class="modal-content">
+        							<div class="modal-header">
+        								<h5 class="modal-title" id="exampleModalFormTitle">Ubah Jenis</h5>
+        								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        									<span aria-hidden="true">&times;</span>
+        								</button>
+        							</div>
+        							<div class="modal-body">
+        								<?= form_open_multipart("Backend/SU/Jenis/ProsesEditJenis")?>
+        								<!-- <form action="<?= site_url("Backend/SU/Admin/ProsesEditAdmin");?>"> -->
+        									<input type="hidden" name="id_jenis" value="<?= $key->id_jenis ?>">
+        									<div class="form-group">
+        											<label for="jenis">Jenis</label>
+        											<input type="text" name="jenis" class="form-control" id="jenis" value="<?= $key->jenis?>">
+        										</div>
+
+        							</div>
+        							<div class="modal-footer">
+
+        								<button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Batal</button>
+        								<button class="btn btn-primary btn-pill" type="submit"> Simpan</button>
+
+        							</div>
+        						</form>
+        						</div>
+        					</div>
+        				</div>
+        			<?php endforeach;?>
+
+        				<!-- Akhir Edit -->
             </div>
 
 

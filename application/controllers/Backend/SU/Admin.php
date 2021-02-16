@@ -60,7 +60,7 @@ class Admin extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			redirect('Backend/SU/Admin/index');
 		} else {
-			$this->Admin_model->editDataUser('user', $data);
+			$this->Admin_model->editDataUser();
 			$this->session->set_flashdata('flash', 'Diubah');
 			redirect('Backend/SU/Admin/index');
 		}
