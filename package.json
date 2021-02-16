@@ -1,0 +1,24 @@
+{
+  "name": "ruangcupang",
+  "version": "1.0.0",
+  "description": "What is CodeIgniter\r ###################",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^7.20.0",
+    "sweetalert2": "^10.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muslih24/RuangCupang.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muslih24/RuangCupang/issues"
+  },
+  "homepage": "https://github.com/Muslih24/RuangCupang#readme"
+}
