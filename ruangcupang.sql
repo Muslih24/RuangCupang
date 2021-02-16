@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2021 at 03:45 PM
+-- Generation Time: Feb 16, 2021 at 03:23 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cupang`
+--
+
+CREATE TABLE `cupang` (
+  `id_cupang` int(11) NOT NULL,
+  `nama_cupang` varchar(50) NOT NULL,
+  `id_jenis` int(11) NOT NULL,
+  `gambar` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cupang`
+--
+
+INSERT INTO `cupang` (`id_cupang`, `nama_cupang`, `id_jenis`, `gambar`) VALUES
+(14, 'Nemo Gold', 18, '20210216143811.jpeg'),
+(15, 'Nemo Copper', 18, '20210216143823.jpeg'),
+(16, 'Avatar', 18, '20210216143847.jpeg'),
+(17, 'Bluerim', 18, '20210216144047.jpeg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jenis`
 --
 
@@ -40,7 +63,8 @@ CREATE TABLE `jenis` (
 
 INSERT INTO `jenis` (`id_jenis`, `jenis`, `total`) VALUES
 (1, 'Giant', 0),
-(4, 'Apa aja', 0);
+(15, 'Halfmoon', 0),
+(18, 'Plakat', 0);
 
 -- --------------------------------------------------------
 
@@ -52,27 +76,28 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nama` text NOT NULL,
   `username` varchar(32) NOT NULL,
-  `password` varchar(150) NOT NULL,
-  `level` enum('Super Admin','Admin','User') NOT NULL,
-  `no_hp` varchar(15) NOT NULL,
-  `email` text NOT NULL,
-  `alamat` text NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `jk` enum('Perempuan','Laki-laki') NOT NULL
+  `password` varchar(40) NOT NULL,
+  `level` enum('superadmin','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `no_hp`, `email`, `alamat`, `tgl_lahir`, `jk`) VALUES
-(1, 'asep junaedi', 'asep1', '2b7753208ed9360d6eece0be91495850e7d3c6dd', 'Super Admin', '1231231132', 'asjdhia@gmail.com', 'asdasdkjbajbsjkqjbakjsd', '2021-01-12', 'Perempuan'),
-(4, 'jajang miharja', 'jajang1', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Admin', '12323121132', 'sambellterasi@gmail.com', 'jl.terasi2', '1991-09-08', 'Laki-laki'),
-(5, 'sutedi', 'tedi', '69c5fcebaa65b560eaf06c3fbeb481ae44b8d618', 'Admin', '123123131', 'sambellteraasi@gmail.com', 'jl.itrs', '2021-01-20', 'Laki-laki');
+INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`) VALUES
+(4, 'Super Admin', 'su', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'superadmin'),
+(13, 'Admin', 'admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'admin');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cupang`
+--
+ALTER TABLE `cupang`
+  ADD PRIMARY KEY (`id_cupang`),
+  ADD KEY `id_jenis` (`id_jenis`);
 
 --
 -- Indexes for table `jenis`
@@ -91,16 +116,32 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `cupang`
+--
+ALTER TABLE `cupang`
+  MODIFY `id_cupang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `jenis`
 --
 ALTER TABLE `jenis`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cupang`
+--
+ALTER TABLE `cupang`
+  ADD CONSTRAINT `cupang_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis` (`id_jenis`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
