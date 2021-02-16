@@ -140,7 +140,6 @@
                                                           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalForm2<?php echo $key->id_jenis;?>">
                                                             Ubah
                                                           </button>
-                                                            <a class="btn btn-info btn-sm" href="<?= base_url('Backend/SU/Jenis/EditJenis/' . $key->id_jenis); ?>">Ubah</a>
                                                             <a class="btn btn-danger btn-sm" href="<?= base_url('Backend/SU/Jenis/DeleteJenis/' . $key->id_jenis); ?>">Hapus</a>
                                                         </td>
                                                     </tr>
