@@ -52,7 +52,7 @@
 						</li>
 
 						<li>
-							<a class="sidenav-item-link" href="index.html" aria-expanded="false" aria-controls="dashboard">
+							<a class="sidenav-item-link" href="<?= base_url('Backend/SU/Cupang');?>" aria-expanded="false" aria-controls="dashboard">
 								<i class="mdi mdi-fish"></i>
 								<span class="nav-text">Ikan Cupang</span>
 							</a>
@@ -78,7 +78,7 @@
 					</button>
 
 					<div class="col-sm-4 col-sm-offset-8" style="position: relative; margin-left: 860px;">
-						<a href="">
+						<a href="<?= base_url('Auth/Login/logout');?>">
 							<button class="btn btn-danger">
 								<i class="mdi mdi-logout"></i>
 								<span class="d-none d-lg-inline-block">Log Out</span>
@@ -161,7 +161,7 @@
 				</div>
 
 
-				<!-- Tambah Jenis -->
+				<!-- Tambah admin -->
 
 				<div class="modal fade" id="exampleModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -262,53 +262,7 @@
 			<?php endforeach;?>
 
 				<!-- Akhir Edit -->
-<!-- <?php
-$no = 0;
-foreach ($user as $key) : $no++ ?>
-				<div class="modal fade" id="exampleModalForm2 <?=$key->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalFormTitle">Ubah Admin</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form action="<?= site_url("Backend/SU/Admin/ProsesAddAdmin");?>" method="post">
-									<div class="form-group">
-											<label for="nama">Nama</label>
-											<input type="text" name="nama" class="form-control" id="name" placeholder="Masukan Nama">
-										</div>
-										<div class="form-group">
-										<label for="username">Username</label>
-										<input type="text" name="username" id="username" class="form-control" placeholder="Masukan Username">
-									</div>
-									<div class="form-group">
-										<label for="password">Password</label>
-										<input type="password" name="password" id="password" class="form-control" placeholder="Masukan Password">
-									</div>
-									<div class="form-group">
-										<label for="level">Hak Akses :</label>
-										<select class="form-control" name="level" id="level" required>
-											<option value="">Pilih</option>
-											<option value="superadmin">Super Admin</option>
-											<option value="admin">Admin</option>
-										</select>
-									</div>
 
-							</div>
-							<div class="modal-footer">
-
-								<button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Batal</button>
-								<button class="btn btn-primary btn-pill" type="submit"> Simpan</button>
-
-							</div>
-						</form>
-						</div>
-					</div>
-				</div>
-				<?php endforeach; ?> -->
 
 
 			</div>

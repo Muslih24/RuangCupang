@@ -38,7 +38,7 @@
 				<div class="sidebar-scrollbar">
 					<ul class="nav sidebar-inner" id="sidebar-menu">
 						<li class="active">
-							<a class="sidenav-item-link" href="index.html" aria-expanded="false" aria-controls="dashboard">
+							<a class="sidenav-item-link" href="<?= base_url('Backend/SU/Admin/dashboard');?>" aria-expanded="false" aria-controls="dashboard">
 								<i class="mdi mdi-view-dashboard-outline"></i>
 								<span class="nav-text">Dashboard</span>
 							</a>
@@ -52,7 +52,7 @@
 						</li>
 
 						<li>
-							<a class="sidenav-item-link" href="index.html" aria-expanded="false" aria-controls="dashboard">
+							<a class="sidenav-item-link" href="<?= base_url('Backend/SU/Cupang');?>" aria-expanded="false" aria-controls="dashboard">
 								<i class="mdi mdi-fish"></i>
 								<span class="nav-text">Ikan Cupang</span>
 							</a>
@@ -78,7 +78,7 @@
 					</button>
 
 					<div class="col-sm-4 col-sm-offset-8" style="position: relative; margin-left: 860px;">
-						<a href="">
+						<a href="<?= base_url('Auth/Login/logout');?>">
 							<button class="btn btn-danger">
 								<i class="mdi mdi-logout"></i>
 								<span class="d-none d-lg-inline-block">Log Out</span>

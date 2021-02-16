@@ -1,74 +1,67 @@
-<?php 
-class Cupang extends CI_Controller{
+<?php
+class Cupang extends CI_Controller
+{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Cupang_model');
-		$this->load->library('form_validation');
+		$this->load->model('Backend/SU/Cupang_model');
+		$this->load->model('Backend/SU/Jenis_model');
 	}
 	public function index()
 	{
-		$data['judul'] = 'List of Cupang';
-		$data['cupang'] = $this->Cupang_model->getAllCupang();
-		if ($this->input->post('keyword') )
-		{
-			$data['cupang'] = $this->Cupang_model->SearchDataCupang();
-		}
-		$data['start'] = $this->uri->segment(3);
-		$this->load->view('templates/header', $data);
-		$this->load->view('cupang/index', $data);
-		$this->load->view('templates/footer');
+		$data['jeniscupang'] = $this->Jenis_model->getData()->result();
+		$data['cupang'] = $this->Cupang_model->getAllCupang()->result();
+		$this->load->view('Backend/SU/Cupang/cupang_view', $data);
 	}
-
-	public function add()
+	public function ProsesEditCupang()
 	{
-		$data['judul'] = 'Form Add Data Cupang';
-		$this->form_validation->set_rules('model', 'Model', 'required');			
+			$this->session->set_flashdata('message', 'Belum Bisa');
+	redirect("Backend/SU/Cupang");
+		}
+	public function ProsesAddCupang()
+	{
 
-		if ($this->form_validation->run() == FALSE ){
-		$this->load->view('templates/header', $data);
-		$this->load->view('cupang/add');
-		$this->load->view('templates/footer');
+		$config['upload_path'] = './assets/uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-		}else{
-			$this->Cupang_model->addDataCupang();
-			$this->session->set_flashdata('flash','ditambahkan');
-			redirect('cupang');
+		if ($_FILES['gambar']['name'] != "") {
+		};
+		$new = explode(".", $_FILES['gambar']['name']);
+		$ext = end($new);
+		$rename = date("YmdHis");
+		$config['file_name'] = $rename;
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		if (!$this->upload->do_upload('gambar')) {
+			$this->session->set_flashdata('Gagal');
+			redirect("Backend/SU/Cupang");
+
+		} else {
+			$data = [
+			'nama_cupang' => $this->input->post('nama_cupang'),
+			'id_jenis' => $this->input->post('id_jenis'),
+			'gambar' => $rename . "." . $ext,
+		];
+		$this->Cupang_model->addDataCupang($data, 'cupang');
+		$this->session->set_flashdata('flash', 'ditambahkan');
+		redirect("Backend/SU/Cupang");
+			//
+			// $this->db->insert('tb_peraturan',$data);
+			// $this->M_arsip->log(array(
+			// 		'ket'=>$this->session->userdata('nama')." telah menambah data arsip ",
+			// 		'datetime'=>date('YmdHis'),
+			// 		'user'=>$this->session->userdata('nama')
+			// 		));
+			// redirect(base_url('admin/C_arsip'));
 		}
 	}
 
-	public function del($id)
+	public function ProsesDeleteCupang($id)
 	{
 		$this->Cupang_model->deleteDataCupang($id);
 		$this->session->set_flashdata('flash', 'dihapus');
-		redirect('cupang');
+	redirect("Backend/SU/Cupang");
 	}
 
-	public function detail($id)
-	{
-		$data['judul'] = 'Detail Data Cupang';
-		$data['cupang'] = $this->Cupang_model->getCupangById($id);
-		$this->load->view('templates/header', $data);
-		$this->load->view('cupang/detail', $data);
-		$this->load->view('templates/footer'); 
+
 	}
-
-		public function edit($id)
-	{
-		$data['judul'] = 'Form Edit Data Cupang';
-		$data['cupang'] = $this->Cupang_model->getCupangById($id);
-
-		$this->form_validation->set_rules('cupang', 'Cupang', 'required');			
-
-		if ($this->form_validation->run() == FALSE ){
-		$this->load->view('templates/header', $data);
-		$this->load->view('cupang/edit', $data);
-		$this->load->view('templates/footer');
-
-		}else{
-			$this->Cupang_model->editDataCupang();
-			$this->session->set_flashdata('flash','Diubah');
-			redirect('cupang');
-		}
-	}
-}

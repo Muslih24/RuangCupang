@@ -1,22 +1,24 @@
 <?php
 
 class Cupang_model extends CI_model{
+
 	public function getAllCupang()
 	{
-		return $query = $this->db->get('cupang')->result_array();
+		$this->db->select('*');
+		$this->db->from('jenis');
+		$this->db->join('cupang','cupang.id_jenis = jenis.id_jenis');
+		$query = $this->db->get();
+		return $query;
 
 	}
-	public function addDataCupang()
+	public function addDataCupang($data,$table)
 	{
-		$data =[
-			"model" => $this->input->post('model', true),
-			];
-		$this->db->insert('cupang', $data);
+		$this->db->insert($table, $data);
 	}
 
 	public function deleteDataCupang($id)
 	{
-		
+
 		$this->db->delete('cupang', ['id_cupang' => $id]);
 	}
 

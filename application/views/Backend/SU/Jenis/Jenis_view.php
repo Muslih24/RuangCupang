@@ -78,8 +78,8 @@
                     </button>
 
                     <div class="col-sm-4 col-sm-offset-8" style="position: relative; margin-left: 860px;">
-                        <a href="">
-                            <button class="btn btn-danger">
+                      <a href="<?= base_url('Auth/Login/logout');?>">
+                          <button class="btn btn-danger">
                                 <i class="mdi mdi-logout"></i>
                                 <span class="d-none d-lg-inline-block">Log Out</span>
                             </button>
@@ -140,7 +140,6 @@
                                                           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalForm2<?php echo $key->id_jenis;?>">
                                                             Ubah
                                                           </button>
-                                                            <a class="btn btn-info btn-sm" href="<?= base_url('Backend/SU/Jenis/EditJenis/' . $key->id_jenis); ?>">Ubah</a>
                                                             <a class="btn btn-danger btn-sm" href="<?= base_url('Backend/SU/Jenis/DeleteJenis/' . $key->id_jenis); ?>">Hapus</a>
                                                         </td>
                                                     </tr>
