@@ -16,7 +16,9 @@ class Jenis extends CI_Controller
 
     function AddJenis()
     {
+        $this->load->view('templates/header');
         $this->load->view('Backend/Jenis/Jenis_add');
+        $this->load->view('templates/footer');
     }
 
     function ProsesAddJenis()
